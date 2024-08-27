@@ -9,9 +9,9 @@ return {
 	font = WEZTERM.font_with_fallback({
 		{
 			-- Font Family
-			family = "Iosevka",
+			family = "Iosevka Term",
 			-- Font Weight
-			weight = "Regular",
+			weight = "Medium",
 			-- Character Varients and Ligatures
 			harfbuzz_features = {
 				"VSAH=7",
@@ -29,6 +29,7 @@ return {
 		"Symbols Nerd Font",
 		"Symbols Nerd Font Mono",
 		"VictorMono Nerd Font",
+		"Hack",
 		"MonaspaceKrypton Nerd Font",
 		"Roboto",
 		"Cascadia Code",
