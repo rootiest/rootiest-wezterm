@@ -2,6 +2,8 @@
 --          │                         WINDOW                          │
 --          ╰─────────────────────────────────────────────────────────╯
 
+local gpus = WEZTERM.gui.enumerate_gpus()
+
 return {
 	-- Set the initial size
 	initial_cols = 180,
@@ -44,15 +46,11 @@ return {
 
 	-- Terminal Variable
 	term = "wezterm",
-	webgpu_preferred_adapter = {
-		backend = "Vulkan",
-		device = 7954,
-		device_type = "DiscreteGpu",
-		driver = "NVIDIA",
-		driver_info = "560.35.03",
-		name = "NVIDIA GeForce RTX 2060 with Max-Q Design",
-		vendor = 4318,
-	},
+
+	-- Rendering
+	front_end = "WebGpu",
+	webgpu_power_preference = "HighPerformance",
+	webgpu_preferred_adapter = gpus[1],
 	-- Scrollback Lines
 	scrollback_lines = 20000,
 }
