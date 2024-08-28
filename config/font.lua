@@ -4,7 +4,7 @@
 
 return {
 	-- Terminal Font Size
-	font_size = 12.0,
+	font_size = 11.5,
 	-- Terminal Font
 	font = WEZTERM.font_with_fallback({
 		{
@@ -56,7 +56,7 @@ return {
 			},
 		}),
 		-- Tab Font Size
-		font_size = 11,
+		font_size = 10,
 	},
 	-- Cell Width
 	cell_width = 1.0,
