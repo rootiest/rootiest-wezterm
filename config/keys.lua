@@ -26,6 +26,12 @@ return {
 		{ key = "k", mods = "ALT", action = act.AdjustPaneSize({ "Up", 1 }) },
 		{ key = "l", mods = "ALT", action = act.AdjustPaneSize({ "Right", 1 }) },
 
+		-- Tab Manipulation
+		{ key = "PageUp", mods = "CTRL", action = act.ActivateTabRelative(1) },
+		{ key = "PageUp", mods = "SHIFT|CTRL", action = act.MoveTabRelative(1) },
+		{ key = "PageDown", mods = "CTRL", action = act.ActivateTabRelative(-1) },
+		{ key = "PageDown", mods = "SHIFT|CTRL", action = act.MoveTabRelative(-1) },
+
 		-- Miscellaneous
 		{ key = "a", mods = "LEADER|CTRL", action = act.SendKey({ key = "a", mods = "CTRL" }) },
 		{ key = "F1", mods = "LEADER", action = act.ShowDebugOverlay },
@@ -60,8 +66,8 @@ return {
 		{
 			key = "!",
 			mods = "LEADER | SHIFT",
-			action = WEZTERM.action_callback(function(win, pane)
-				local tab, window = pane:move_to_new_window()
+			action = WEZTERM.action_callback(function(_, pane)
+				pane:move_to_new_window()
 			end),
 		},
 	},
