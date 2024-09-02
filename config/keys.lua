@@ -34,8 +34,45 @@ return {
 
 		-- Miscellaneous
 		{ key = "a", mods = "LEADER|CTRL", action = act.SendKey({ key = "a", mods = "CTRL" }) },
+		{ key = ";", mods = "CTRL", action = act.ActivateCommandPalette },
 		{ key = "F1", mods = "LEADER", action = act.ShowDebugOverlay },
+		{ key = "s", mods = "LEADER|CTRL", action = act.ShowLauncherArgs({ flags = "DOMAINS" }) },
+		{ key = "z", mods = "LEADER|CTRL", action = act.TogglePaneZoomState },
+		{ key = "n", mods = "LEADER|CTRL", action = act.SpawnWindow },
+		{
+			key = "x",
+			mods = "LEADER|CTRL",
+			action = act.ShowLauncherArgs({
+				title = "Quick Launch",
+				flags = "FUZZY|TABS|DOMAINS|WORKSPACES|COMMANDS|LAUNCH_MENU_ITEMS|KEY_ASSIGNMENTS",
+			}),
+		},
 
+		-- Naming
+		{ -- Rename [W]orkspace
+			key = "w",
+			mods = "LEADER|CTRL",
+			action = act.PromptInputLine({
+				description = "Enter new name for the workspace:",
+				action = WEZTERM.action_callback(function(window, _, line)
+					if line then
+						WEZTERM.mux.rename_workspace(window:active_workspace(), line)
+					end
+				end),
+			}),
+		},
+		{ -- Rename [T]ab
+			key = "t",
+			mods = "LEADER|CTRL",
+			action = act.PromptInputLine({
+				description = "Enter new name for the tab:",
+				action = WEZTERM.action_callback(function(window, _, line)
+					if line then
+						WEZTERM.mux.rename_workspace(window:active_workspace(), line)
+					end
+				end),
+			}),
+		},
 		{ -- [S]ave Session
 			key = "s",
 			mods = "ALT",
