@@ -2,64 +2,22 @@
 --          │                          FONTS                          │
 --          ╰─────────────────────────────────────────────────────────╯
 
+local types = require("types")
+
 return {
 	-- Terminal Font Size
-	font_size = 11.5,
+	font_size = 12.0,
 	-- Terminal Font
-	font = WEZTERM.font_with_fallback({
-		{
-			-- Font Family
-			family = "Iosevka Term",
-			-- Font Weight
-			weight = "Medium",
-			-- Character Varients and Ligatures
-			harfbuzz_features = {
-				"VSAH=7",
-				"VSAF=3",
-				"VSAI=3",
-				"VSAJ=8",
-				"VSAM=4",
-				"VLAB=5",
-				"cv10=7",
-				"cv41=3",
-				"cv44=6",
-				"cv07=4",
-			},
-		},
-		"Symbols Nerd Font",
-		"Symbols Nerd Font Mono",
-		"VictorMono Nerd Font",
-		"Hack",
-		"MonaspaceKrypton Nerd Font",
-		"Roboto",
-		"Cascadia Code",
-	}),
+	font = WEZTERM.font_with_fallback(types.font),
 	-- Tab Font
 	window_frame = {
-		font = WEZTERM.font({
-			-- Tab Font Family
-			family = "Iosevka",
-			-- Tab Font Weight
-			weight = "Medium",
-			-- Character Varients and Ligatures
-			harfbuzz_features = {
-				"VSAH=7",
-				"VSAF=3",
-				"VSAI=3",
-				"VSAJ=8",
-				"VSAM=4",
-				"VLAB=5",
-				"cv10=7",
-				"cv41=3",
-				"cv44=6",
-				"cv07=4",
-			},
-		}),
+		font = WEZTERM.font(types.win_font),
 		-- Tab Font Size
 		font_size = 10,
 	},
-	-- Cell Width
+	-- Cell Sizing
 	cell_width = 1.0,
+	line_height = 1.0,
 	-- ANSI Colors
 	bold_brightens_ansi_colors = "BrightAndBold",
 	-- FreeType Load Flags

@@ -10,15 +10,15 @@ return {
 	initial_rows = 38,
 
 	tab_max_width = 60,
+	tab_bar_at_bottom = false,
+
+	unicode_version = 14,
 
 	-- Resize by cell
 	use_resize_increments = true,
 
 	-- Use Retro tab bar
 	use_fancy_tab_bar = false,
-
-	-- Prefer to spawn tabs rather than windows
-	prefer_to_spawn_tabs = true,
 
 	-- Set the window padding
 	window_padding = {
@@ -46,6 +46,9 @@ return {
 
 	-- Terminal Variable
 	term = "wezterm",
+
+	--Honor kitty protocol inputs
+	enable_kitty_keyboard = true,
 
 	-- Rendering
 	front_end = "WebGpu",

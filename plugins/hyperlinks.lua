@@ -8,9 +8,11 @@ local M = {}
 CONFIG.hyperlink_rules = WEZTERM.default_hyperlink_rules()
 
 -- Add support for GitHub link style
+
 table.insert(CONFIG.hyperlink_rules, {
-	regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-	format = "https://www.github.com/$1/$3",
+	regex = [["([a-zA-Z0-9_\-]+/[a-zA-Z0-9_\-\.]+)"]],
+	format = "https://www.github.com/$1",
+	highlight = 1,
 })
 
 -- make Jira IDs clickable
