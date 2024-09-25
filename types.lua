@@ -19,6 +19,14 @@ M.harfbuzz_features = {
 	"cv07=4",
 }
 
+M.maple_features = {
+	"ss01",
+	"ss02",
+	"ss03",
+	"ss04",
+	"ss05",
+}
+
 M.hours_icons = {
 	["00"] = wezterm.nerdfonts.md_clock_time_twelve_outline,
 	["01"] = wezterm.nerdfonts.md_clock_time_one_outline,
@@ -44,6 +52,33 @@ M.hours_icons = {
 	["21"] = wezterm.nerdfonts.md_clock_time_nine, -- 9:00 in solid icon
 	["22"] = wezterm.nerdfonts.md_clock_time_ten, -- 10:00 in solid icon
 	["23"] = wezterm.nerdfonts.md_clock_time_eleven, -- 11:00 in solid icon
+}
+
+M.font_maple = {
+	{
+		-- Font Family
+		family = "Maple Mono NF",
+		-- Font WeightLazy
+		weight = "Medium",
+		-- Character Varients and Ligatures
+		harfbuzz_features = M.maple_features,
+	},
+	{
+		-- Font Family
+		family = "Iosevka Term",
+		-- Font WeightLazy
+		weight = "Medium",
+		-- Character Varients and Ligatures
+		harfbuzz_features = M.harfbuzz_features,
+	},
+	"Flog Symbols",
+	"Symbols Nerd Font",
+	"Symbols Nerd Font Mono",
+	"VictorMono Nerd Font",
+	"Hack",
+	"MonaspaceKrypton Nerd Font",
+	"Roboto",
+	"Cascadia Code",
 }
 
 M.font = {
