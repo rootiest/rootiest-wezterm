@@ -2,9 +2,7 @@ local wezterm = WEZTERM
 local config = CONFIG
 local types = require("types")
 local funcs = require("funcs")
-local batteries = wezterm.plugin.require("https://github.com/rootiest/battery.wez")
---local batteries = wezterm.plugin.require("file:///home/rootiest/projects/battery.wez")
-batteries.invert = true
+local batteries = BATTERIES
 
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
