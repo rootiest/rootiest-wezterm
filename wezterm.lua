@@ -16,10 +16,19 @@ WEZTERM = require("wezterm")
 CONFIG = WEZTERM.config_builder()
 
 -- Load Options
-require("options").setup()
+--require("options").setup()
+
+local configs = require("configs")
+
+for k, v in pairs(configs) do
+	CONFIG[k] = v
+end
 
 -- Load Plugins
-require("plugins").setup()
+require("plugins.hyperlinks")
+require("plugins.resurrect")
+require("plugins.smart_splits")
+require("plugins.tabline")
 
 --------- Update Plugins ----------
 ---Running this may cause slowdowns

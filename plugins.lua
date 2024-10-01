@@ -35,6 +35,13 @@ function M.require_plugins(dir)
 	pfile:close()
 end
 
+function M.require_plugs()
+	require("plugins.hyperlinks")
+	require("plugins.resurrect")
+	require("plugins.smart_splits")
+	require("plugins.tabline")
+end
+
 -- Function to update all plugins
 function M.update_plugins()
 	WEZTERM.plugin.update_all()
@@ -42,7 +49,7 @@ end
 
 function M.setup()
 	-- Load all plugins from the 'plugins' directory
-	M.require_plugins()
+	M.require_plugs()
 end
 
 return M
