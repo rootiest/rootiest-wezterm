@@ -2,7 +2,8 @@
 --          │                         WINDOW                          │
 --          ╰─────────────────────────────────────────────────────────╯
 
-local gpus = WEZTERM.gui.enumerate_gpus()
+local wezterm = WEZTERM
+local gpus = wezterm.gui.enumerate_gpus()
 
 return {
 	-- Set the initial size
@@ -52,6 +53,7 @@ return {
 
 	-- Rendering
 	front_end = "WebGpu",
+	-- front_end = "OpenGL",
 	webgpu_power_preference = "HighPerformance",
 	webgpu_preferred_adapter = gpus[1],
 	-- Scrollback Lines

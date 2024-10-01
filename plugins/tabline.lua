@@ -2,6 +2,9 @@ local wezterm = WEZTERM
 local config = CONFIG
 local types = require("types")
 local funcs = require("funcs")
+--local batteries = wezterm.plugin.require("https://github.com/rootiest/battery.wez")
+local batteries = wezterm.plugin.require("file:///home/rootiest/projects/battery.wez")
+batteries.invert = true
 
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
@@ -96,29 +99,7 @@ tabline.setup({
 		},
 		tabline_z = {
 			{ "hostname", padding = { left = 0, right = 1 } },
-			{
-				"battery",
-				battery_to_icon = {
-					empty = {
-						wezterm.nerdfonts.fa_battery_empty .. " ",
-						color = { fg = funcs.invert_color_brightness("#f37ca0") },
-					},
-					quarter = {
-						wezterm.nerdfonts.fa_battery_quarter .. " ",
-						color = { fg = funcs.invert_color_brightness("#ffb080") },
-					},
-					half = {
-						wezterm.nerdfonts.fa_battery_half .. " ",
-						color = { fg = funcs.invert_color_brightness("#fbe2a9") },
-					},
-					three_quarters = wezterm.nerdfonts.fa_battery_three_quarters .. " ",
-					full = {
-						wezterm.nerdfonts.fa_battery_full .. " ",
-						color = { fg = funcs.invert_color_brightness("#93e398") },
-					},
-				},
-				padding = { left = 0, right = 1 },
-			},
+			batteries.get_battery_icons,
 		},
 	},
 	extensions = { "resurrect" },

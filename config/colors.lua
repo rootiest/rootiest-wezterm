@@ -16,6 +16,9 @@ return {
 		-- Visual Bell
 		visual_bell = "#E78284",
 	},
+	-- Command Palette Colors
+	command_palette_bg_color = "#232634", -- Command Palette Background
+	command_palette_fg_color = "#C6D0F5", -- Command Palette Foreground
 	-- Titlebar and Frame Colors
 	window_frame = {
 		active_titlebar_bg = "#232634",

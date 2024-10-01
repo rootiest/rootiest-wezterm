@@ -7,14 +7,14 @@ local M = {}
 
 -- Function to require all Lua files in a directory and merge them
 local function require_configs(dir)
-  -- Check if the path exists
+	-- Check if the path exists
 	local path = dir or os.getenv("HOME") .. "/.config/wezterm/config/"
 	if not path then
 		print("Directory path is nil. Unable to load configurations.")
 		return
 	end
 
-  -- Open the directory
+	-- Open the directory
 	local pfile, open_err = io.popen('ls "' .. path .. '"')
 	if not pfile then
 		print("Error opening directory:", open_err)
@@ -23,7 +23,7 @@ local function require_configs(dir)
 
 	local configs = {}
 
-  -- Iterate over the files in the directory
+	-- Iterate over the files in the directory
 	for file in pfile:lines() do
 		if file:match("%.lua$") then
 			local module_name = file:gsub("%.lua$", "")

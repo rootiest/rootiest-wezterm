@@ -8,7 +8,7 @@ return {
 	-- Terminal Font Size
 	font_size = 12.0,
 	-- Terminal Font
-	font = WEZTERM.font_with_fallback(types.font),
+	font = WEZTERM.font_with_fallback(types.rootiest_font),
 	-- Tab Font
 	window_frame = {
 		font = WEZTERM.font(types.win_font),
@@ -26,5 +26,4 @@ return {
 	freetype_load_target = "Normal",
 	-- Default Cursor Shape
 	default_cursor_style = "BlinkingBar",
-	-- Fallback Fonts
 }

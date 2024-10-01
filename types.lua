@@ -6,18 +6,56 @@ local M = {}
 
 local wezterm = WEZTERM
 
+-- stylua: ignore start
 M.harfbuzz_features = {
-	"VSAH=7",
-	"VSAF=3",
-	"VSAI=3",
-	"VSAJ=8",
-	"VSAM=4",
-	"VLAB=5",
-	"cv10=7",
-	"cv41=3",
-	"cv44=6",
-	"cv07=4",
+--  ╭──────── Character Varients ─────╮
+--  ╰── Varient              Result ──╯
+        "VSAA=1",     --       ~
+        "VSAG=1",     --      ( )
+        "VSAH=7",     --      { }
+        "VSAI=2",     --     << >>
+        "VSAO=2",     --       %
+        "VSAJ=8",     --       #
+        "VSAK=1",     --       &
+        "VSAL=2",     --       @
+        "VSAM=9",     --       $
+        "VSAP=1",     --      | /
+        "VSAQ=1",     --       ?
+        "VLAB=5",     --       !=
+        "VLAD=1",     --       --
+        "cv01=0",     --       1
+        "cv02=0",     --       2
+        "cv03=1",     --       3
+        "cv05=1",     --       5
+        "cv06=1",     --       6
+        "cv07=4",     --       7
+        "cv08=1",     --       8
+        "cv09=1",     --       9
+        "cv10=7",     --       0
+        "cv17=2",     --       G
+        "cv19=2",     --       I
+        "cv26=9",     --       Q
+        "cv41=7",     --       f
+        "cv42=1",     --       g
+        "cv45=2",     --       j
+        "cv46=24",    --       k
+        "cv47=8",     --       l
+        "dlig=1",  --  <= >= </ </> /> <>
 }
+-- stylua: ignore end
+
+
+-- stylua: ignore start
+M.harfbuzz_rootiest = {
+--  ╭──────── Character Varients ─────╮
+--  ╰── Varient              Result ──╯
+        "cv39=4",     --       d
+        "VSAL=8",     --       @
+        "VSAM=9",     --       $
+        "VSAN=9",     --       ¢
+        "VSAO=2",     --       %
+}
+-- stylua: ignore end
 
 M.maple_features = {
 	"ss01",
@@ -74,6 +112,7 @@ M.font_maple = {
 	"Flog Symbols",
 	"Symbols Nerd Font",
 	"Symbols Nerd Font Mono",
+	"Material Icons",
 	"VictorMono Nerd Font",
 	"Hack",
 	"MonaspaceKrypton Nerd Font",
@@ -86,23 +125,59 @@ M.font = {
 		-- Font Family
 		family = "Iosevka Term",
 		-- Font WeightLazy
-		weight = "Medium",
+		weight = "Regular",
 		-- Character Varients and Ligatures
 		harfbuzz_features = M.harfbuzz_features,
 	},
 	"Flog Symbols",
 	"Symbols Nerd Font",
 	"Symbols Nerd Font Mono",
+	"PowerlineSymbols",
+	"Material Icons",
 	"VictorMono Nerd Font",
 	"Hack",
 	"MonaspaceKrypton Nerd Font",
 	"Roboto",
 	"Cascadia Code",
+	"JetBrains Mono",
+	"Fira Code",
+	"Fira Code Retina",
+	"Fira Code Nerd Font",
+	"FiraCode Nerd Font",
+}
+
+M.rootiest_font = {
+	"Iosevka Rootiest v2",
+	"Iosevka Rootiest",
+	{
+		-- Font Family
+		family = "Iosevka Custom",
+		-- Font Weight
+		weight = "Regular",
+		-- Character Varients and Ligatures
+		harfbuzz_features = M.harfbuzz_rootiest,
+	},
+	"Flog Symbols",
+	"Symbols Nerd Font",
+	"Symbols Nerd Font Mono",
+	"PowerlineSymbols",
+	"Material Icons",
+	"Noto Color Emoji",
+	"VictorMono Nerd Font",
+	"Hack",
+	"MonaspaceKrypton Nerd Font",
+	"Roboto",
+	"Cascadia Code",
+	"JetBrains Mono",
+	"Fira Code",
+	"Fira Code Retina",
+	"Fira Code Nerd Font",
+	"FiraCode Nerd Font",
 }
 
 M.win_font = {
 	-- Tab Font Family
-	family = "Iosevka",
+	family = "Iosevka Rootiest",
 	-- Tab Font Weight
 	weight = "Medium",
 	-- Character Varients and Ligatures

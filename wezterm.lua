@@ -24,7 +24,7 @@ require("plugins").setup()
 --------- Update Plugins ----------
 ---Running this may cause slowdowns
 -----------------------------------
---- WEZTERM.plugin.update_all() ---
+-- WEZTERM.plugin.update_all() ----
 -----------------------------------
 
 -- Return configuration
