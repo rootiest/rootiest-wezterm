@@ -3,14 +3,14 @@
 --          ╰─────────────────────────────────────────────────────────╯
 local wezterm = WEZTERM
 local act = wezterm.action
-local gpus = wezterm.gui.enumerate_gpus()
+-- local gpus = wezterm.gui.enumerate_gpus()
 local types = require("types")
 
 local cur_hour = wezterm.time.now():format("%H")
 
 local hour_angle = require("funcs").get_hour_angle(cur_hour)
 
-return {
+local opts = {
 	-- Color Scheme
 	color_scheme = "Catppuccin Mocha",
 	-- Tab Bar Colors
@@ -123,11 +123,14 @@ return {
 
 	-- Rendering
 	front_end = "WebGpu",
+	-- webgpu_power_preference = "HighPerformance",
+	-- webgpu_power_preference = "LowPower",
+	-- webgpu_preferred_adapter = gpus[1],
 	-- front_end = "OpenGL",
-	webgpu_power_preference = "HighPerformance",
-	webgpu_preferred_adapter = gpus[1],
+
 	-- Scrollback Lines
 	scrollback_lines = 20000,
+
 	--  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Leader key ━━━━━━━━━━━━━━━━━━━━━━━━━━
 	leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1500 },
 	--  ━━━━━━━━━━━━━━━━━━━━━━━━━ Global Key Mappings ━━━━━━━━━━━━━━━━━━━━━
@@ -343,3 +346,11 @@ return {
 		},
 	},
 }
+
+-- merge the table in os_opts.lua into opts
+local os_opts = require("platform")
+for k, v in pairs(os_opts) do
+	opts[k] = v
+end
+
+return opts
