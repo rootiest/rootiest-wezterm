@@ -11,7 +11,7 @@ local function merge_into_opts(mod)
 	end
 end
 
--- List of config modules to merge
+-- List of default config modules to merge
 local modules = {
 	"colors",
 	"font",
@@ -20,15 +20,15 @@ local modules = {
 	"platform",
 }
 
--- If USERCONFIG is true, merge userconfig
-if USERCONFIG then
-	merge_into_opts("user")
-end
-
--- Merge all modules into opts
+-- Merge all default modules into opts
 for _, mod in ipairs(modules) do
 	merge_into_opts(mod)
 end
 
--- Return config options
+-- If USERCONFIG is true, merge userconfig into opts
+if USERCONFIG then
+	merge_into_opts("user")
+end
+
+-- Return config options table
 return opts
