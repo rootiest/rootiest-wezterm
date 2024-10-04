@@ -16,22 +16,21 @@ WEZTERM = require("wezterm")
 CONFIG = WEZTERM.config_builder()
 
 -- Load Options
-local configs = require("configs")
+local opts = require("opts")
 
 -- Apply config
-for k, v in pairs(configs) do
+for k, v in pairs(opts) do
 	CONFIG[k] = v
 end
 
 -- Check for dev-modes
 DEVMODE = pcall(require, "dev")
 
--- Load Plugins
-require("plugins.battery")
-require("plugins.hyperlinks")
-require("plugins.resurrect")
-require("plugins.smart_splits")
-require("plugins.tabline")
+-- Check for user-configs
+USERCONFIG = pcall(require, "user")
+
+-- Load plugins
+require("plugs")
 
 --------- Update Plugins ----------
 ---Running this may cause slowdowns

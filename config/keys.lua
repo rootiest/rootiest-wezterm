@@ -1,136 +1,13 @@
 --          ╭─────────────────────────────────────────────────────────╮
---          │                         CONFIG                          │
+--          │                         KEYMAPS                         │
 --          ╰─────────────────────────────────────────────────────────╯
+
 local wezterm = WEZTERM
 local act = wezterm.action
--- local gpus = wezterm.gui.enumerate_gpus()
-local types = require("types")
 
-local cur_hour = wezterm.time.now():format("%H")
-
-local hour_angle = require("funcs").get_hour_angle(cur_hour)
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
 
 local opts = {
-	-- Color Scheme
-	color_scheme = "Catppuccin Mocha",
-	-- Tab Bar Colors
-	colors = {
-		-- Compose Cursor
-		compose_cursor = "#a5e3a0",
-		-- Visual Bell
-		visual_bell = "#E78284",
-	},
-	-- Command Palette Colors
-	command_palette_bg_color = "#232634", -- Command Palette Background
-	command_palette_fg_color = "#C6D0F5", -- Command Palette Foreground
-	-- Titlebar and Frame Colors
-	window_frame = {
-		active_titlebar_bg = "#232634",
-		inactive_titlebar_bg = "#303446",
-		inactive_titlebar_fg = "#484D69",
-		active_titlebar_fg = "#C6D0F5",
-		inactive_titlebar_border_bottom = "#3b3052",
-		active_titlebar_border_bottom = "#3b3052",
-		button_fg = "#C6D0F5",
-		button_bg = "#3b3052",
-		button_hover_fg = "#C6D0F5",
-		button_hover_bg = "#2b2042",
-		font = wezterm.font(types.win_font),
-		-- Tab Font Size
-		font_size = 10,
-	},
-	-- Inactive Pane Filter
-	inactive_pane_hsb = {
-		saturation = 1.0,
-		brightness = 0.5,
-	},
-	window_background_gradient = {
-		orientation = {
-			Linear = {
-				angle = hour_angle,
-			},
-		},
-		colors = {
-			-- "#303446",
-			"#24273a",
-			"#1e1e2e",
-		},
-		interpolation = "CatmullRom",
-		blend = "Oklab",
-		noise = 128,
-		segment_size = 7,
-		segment_smoothness = 1.0,
-	},
-	-- Terminal Font Size
-	font_size = 12.0,
-	-- Terminal Font
-	font = wezterm.font_with_fallback(types.rootiest_font),
-	-- Cell Sizing
-	cell_width = 1.0,
-	line_height = 1.0,
-	-- ANSI Colors
-	bold_brightens_ansi_colors = "BrightAndBold",
-	-- FreeType Load Flags
-	freetype_load_flags = "DEFAULT",
-	-- FreeType Load Target
-	freetype_load_target = "Normal",
-	-- Default Cursor Shape
-	default_cursor_style = "BlinkingBar",
-	-- Set the initial size
-	initial_cols = 180,
-	initial_rows = 38,
-
-	tab_max_width = 60,
-	tab_bar_at_bottom = false,
-
-	unicode_version = 14,
-
-	-- Resize by cell
-	use_resize_increments = true,
-
-	-- Use Retro tab bar
-	use_fancy_tab_bar = false,
-
-	-- Set the window padding
-	window_padding = {
-		left = "0%",
-		right = "0%",
-		top = "0%",
-		bottom = "0%",
-	},
-
-	-- Set the animation framerate
-	animation_fps = 120,
-
-	-- Window Decorations
-	window_decorations = "TITLE | RESIZE",
-
-	-- Visual Bell
-	visual_bell = {
-		fade_in_duration_ms = 75,
-		fade_out_duration_ms = 75,
-		target = "CursorColor",
-	},
-
-	-- Audible Bell
-	audible_bell = "SystemBeep",
-
-	-- Terminal Variable
-	term = "wezterm",
-
-	--Honor kitty protocol inputs
-	enable_kitty_keyboard = true,
-
-	-- Rendering
-	front_end = "WebGpu",
-	-- webgpu_power_preference = "HighPerformance",
-	-- webgpu_power_preference = "LowPower",
-	-- webgpu_preferred_adapter = gpus[1],
-	-- front_end = "OpenGL",
-
-	-- Scrollback Lines
-	scrollback_lines = 20000,
-
 	--  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Leader key ━━━━━━━━━━━━━━━━━━━━━━━━━━
 	leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1500 },
 	--  ━━━━━━━━━━━━━━━━━━━━━━━━━ Global Key Mappings ━━━━━━━━━━━━━━━━━━━━━
@@ -243,13 +120,25 @@ local opts = {
 				end),
 			}),
 		},
+		{ -- Save [w]orkspace State
+			key = "w",
+			mods = "ALT",
+			action = wezterm.action_callback(function()
+				resurrect.save_state(resurrect.workspace_state.get_workspace_state())
+			end),
+		},
+		{ -- Save [W]indow State
+			key = "W",
+			mods = "ALT",
+			action = resurrect.window_state.save_window_action(),
+		},
 		{ -- [S]ave Session
 			key = "s",
 			mods = "ALT",
 			action = act.Multiple({
 				wezterm.action_callback(function(_, _)
-					RESURRECT.save_state(RESURRECT.workspace_state.get_workspace_state())
-					RESURRECT.window_state.save_window_action()
+					resurrect.save_state(resurrect.workspace_state.get_workspace_state())
+					resurrect.window_state.save_window_action()
 				end),
 			}),
 		},
@@ -257,24 +146,24 @@ local opts = {
 			key = "r",
 			mods = "ALT",
 			action = wezterm.action_callback(function(win, pane)
-				RESURRECT.fuzzy_load(win, pane, function(id)
+				resurrect.fuzzy_load(win, pane, function(id)
 					local type = string.match(id, "^([^/]+)") -- match before '/'
 					id = string.match(id, "([^/]+)$") -- match after '/'
 					id = string.match(id, "(.+)%..+$") -- remove file extension
 					local state
 					if type == "workspace" then
-						state = RESURRECT.load_state(id, "workspace")
-						RESURRECT.workspace_state.restore_workspace(state, {
+						state = resurrect.load_state(id, "workspace")
+						resurrect.workspace_state.restore_workspace(state, {
 							relative = true,
 							restore_text = true,
-							on_pane_restore = RESURRECT.tab_state.default_on_pane_restore,
+							on_pane_restore = resurrect.tab_state.default_on_pane_restore,
 						})
 					elseif type == "window" then
-						state = RESURRECT.load_state(id, "window")
-						RESURRECT.window_state.restore_window(pane:window(), state, {
+						state = resurrect.load_state(id, "window")
+						resurrect.window_state.restore_window(pane:window(), state, {
 							relative = true,
 							restore_text = true,
-							on_pane_restore = RESURRECT.tab_state.default_on_pane_restore,
+							on_pane_restore = resurrect.tab_state.default_on_pane_restore,
 							-- uncomment this line to use active tab when restoring
 							-- tab = win:active_tab(),
 						})
@@ -346,11 +235,5 @@ local opts = {
 		},
 	},
 }
-
--- merge the table in os_opts.lua into opts
-local os_opts = require("platform")
-for k, v in pairs(os_opts) do
-	opts[k] = v
-end
 
 return opts
