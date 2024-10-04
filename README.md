@@ -121,6 +121,27 @@ This is applied after the default config so user options will override any defau
 Further, the `user.lua` file is ignored by git and
 will not impact your ability to pull updates.
 
+### Session Encryption
+
+The default configuration attempts to use my personal encryption keys.
+
+If the keyfile cannot be found, encryption is disabled.
+
+You can customize this by adding (above the `return{}` table):
+
+```lua
+MYKEY = "/path/to/keyfile.txt" -- Path to the keyfile
+MYPUBKEY = "age1q80h5jsp9d48kggf9kra82xkgyaqdnehqenm003ftapem9re7ytqp9hr6h"
+
+return {
+  -- Etc..
+}
+```
+
+These global variables will be detected and used to apply the encryption.
+
+As with the default configuration, if the keyfile is not found, encryption is disabled.
+
 ## Screenshots
 
 ![Rootiest WezTerm](.screenshots/term.png)

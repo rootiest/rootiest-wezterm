@@ -27,7 +27,12 @@ end
 
 -- If USERCONFIG is true, merge userconfig into opts
 if USERCONFIG then
-	merge_into_opts("user")
+	for k, v in pairs(require("user")) do
+		opts[k] = v
+	end
+else
+	MYKEY = nil
+	MYPUBKEY = nil
 end
 
 -- Return config options table

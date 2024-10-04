@@ -32,6 +32,9 @@ USERCONFIG = pcall(require, "user")
 -- Load plugins
 require("plugs")
 
+-- Encrypt Sessions
+require("encryption")
+
 --------- Update Plugins ----------
 ---Running this may cause slowdowns
 -----------------------------------
