@@ -96,6 +96,8 @@ The rootiest WezTerm configuration you will ever see!
 User customizations can be added by creating a `user.lua` file in the
 `~/.config/wezterm` directory.
 
+### General Configuration
+
 The file should be structured in the following manner:
 
 ```lua
@@ -141,6 +143,63 @@ return {
 These global variables will be detected and used to apply the encryption.
 
 As with the default configuration, if the keyfile is not found, encryption is disabled.
+
+### Tabline Customization
+
+The tabline configuration can also be customized.
+
+This is done by adding (above the `return{}` table):
+
+```lua
+local wezterm = WEZTERM -- Link to the main wezterm object
+
+MYTABLINE = {
+  options = {
+    icons_enabled = true,
+    theme = 'Catppuccin Mocha',
+    color_overrides = {},
+    section_separators = {
+      left = wezterm.nerdfonts.pl_left_hard_divider,
+      right = wezterm.nerdfonts.pl_right_hard_divider,
+    },
+    component_separators = {
+      left = wezterm.nerdfonts.pl_left_soft_divider,
+      right = wezterm.nerdfonts.pl_right_soft_divider,
+    },
+    tab_separators = {
+      left = wezterm.nerdfonts.pl_left_hard_divider,
+      right = wezterm.nerdfonts.pl_right_hard_divider,
+    },
+  },
+  sections = {
+    tabline_a = { 'mode' },
+    tabline_b = { 'workspace' },
+    tabline_c = { ' ' },
+    tab_active = {
+      'index',
+      { 'parent', padding = 0 },
+      '/',
+      { 'cwd', padding = { left = 0, right = 1 } },
+      { 'zoomed', padding = 0 },
+    },
+    tab_inactive = { 'index', { 'process', padding = { left = 0, right = 1 } } },
+    tabline_x = { 'ram', 'cpu' },
+    tabline_y = { 'datetime', 'battery' },
+    tabline_z = { 'hostname' },
+  },
+  extensions = {},
+}
+
+return {
+  -- Etc..
+}
+```
+
+The table above is taken from the example in the
+[tabline.wez documentation](https://github.com/michaelbrusegard/tabline.wez?tab=readme-ov-file#default-configuration).
+
+This is the table that will be passed to `tabline.setup()`
+and loaded by the tabline plugin.
 
 ## Screenshots
 

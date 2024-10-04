@@ -6,7 +6,7 @@ local batteries = BATTERIES
 
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
-tabline.setup({
+local tab_opts = {
 	options = {
 		icons_enabled = true,
 		theme = "Catppuccin Mocha",
@@ -97,11 +97,23 @@ tabline.setup({
 		},
 		tabline_z = {
 			{ "hostname", padding = { left = 0, right = 1 } },
-			batteries.get_battery_icons,
 		},
 	},
 	extensions = { "resurrect" },
-})
+}
+
+if batteries.get_battery_icons() ~= "" then
+	tab_opts.sections.tabline_z = {
+		{ "hostname", padding = { left = 0, right = 1 } },
+		batteries.get_battery_icons,
+	}
+end
+
+if MYTABLINE ~= nil then
+	tab_opts = MYTABLINE
+end
+
+tabline.setup(tab_opts)
 
 local function apply_tabline_config(conf)
 	conf.use_fancy_tab_bar = false

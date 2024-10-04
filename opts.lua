@@ -33,6 +33,7 @@ if USERCONFIG then
 else
 	MYKEY = nil
 	MYPUBKEY = nil
+	MYTAB_BAR = nil
 end
 
 -- Return config options table
