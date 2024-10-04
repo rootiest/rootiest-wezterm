@@ -28,8 +28,6 @@ if myos == "win" then
 	opts.default_prog = { "pwsh.exe" }
 	opts.window_background_opacity = 0
 	opts.win32_system_backdrop = "Mica"
-else
-	opts.default_prog = { "bash" }
 end
 
 -- Return the opts table
