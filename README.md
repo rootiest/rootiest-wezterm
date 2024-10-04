@@ -91,6 +91,36 @@ The rootiest WezTerm configuration you will ever see!
 - Catppuccin theme by default
 - Integrates cleanly with other Rootiest projects
 
+## Customization
+
+User customizations can be added by creating a `user.lua` file in the
+`~/.config/wezterm` directory.
+
+The file should be structured in the following manner:
+
+```lua
+return {
+  -- Ex:
+  color_scheme = "Catppuccin Mocha",
+  leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 },
+  default_prog = { "/bin/zsh", "-l" },
+}
+```
+
+Config options can be found in the
+[wezterm Configuration documentation](https://wezfurlong.org/wezterm/config/files.html).
+
+Options in the `user.lua` file are written as
+`key = value` pairs (without the `config.` prefix).
+
+The configuration loading code will detect the user file
+and merge it with the rest of the configuration.
+
+This is applied after the default config so user options will override any defaults.
+
+Further, the `user.lua` file is ignored by git and
+will not impact your ability to pull updates.
+
 ## Screenshots
 
 ![Rootiest WezTerm](.screenshots/term.png)
