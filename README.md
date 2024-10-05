@@ -68,16 +68,18 @@ The rootiest WezTerm configuration you will ever see!
 
 1. Install [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.1)
 
-2. Install [WezTerm](https://wezfurlong.org/wezterm/installation.html)
+2. Install [Rootiest Iosevka fonts](./fonts/README.md#windows)
 
-3. Clone the repository
+3. Install [WezTerm](https://wezfurlong.org/wezterm/installation.html)
+
+4. Clone the repository
 
    ```powershell
    $home = $env:USERPROFILE
    git clone https://github.com/rootiest/rootiest-wezterm.git $home/.config/wezterm
    ```
 
-4. Enjoy! 🎉
+5. Enjoy! 🎉
 
 ## Features
 

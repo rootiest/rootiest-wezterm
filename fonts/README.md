@@ -12,6 +12,8 @@ The Nerd Font patches were built using
 
 ## Installation
 
+[Install the Rootiest WezTerm config](../README.md#installation)
+
 ### Linux
 
 ```bash
@@ -23,7 +25,9 @@ fc-cache -fv
 ### Windows
 
 ```powershell
-cd $HOME\.config\wezterm\fonts
+
+$home = $env:USERPROFILE
+cd $home\.config\wezterm\fonts
 cp *.{otf,ttf} $env:LOCALAPPDATA\Microsoft\Windows\Fonts
 ```
 
