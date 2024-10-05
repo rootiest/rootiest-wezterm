@@ -44,7 +44,7 @@ The rootiest WezTerm configuration you will ever see!
 2. Install pre-requisites
 
    - Required
-     - [Rootiest Iosevka fonts](./fonts/README.md).
+     - [Rootiest Iosevka fonts](./fonts/README.md)
    - Optional
      - [fish](https://fishshell.com/)
      - [neovim](https://neovim.io/)
