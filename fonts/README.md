@@ -2,6 +2,8 @@
 
 This is a collection of Iosevka font varients that are used in the rootiest configurations.
 
+![Rootiest Iosevka V2 Font - Regular](./iosevka-v2-regular.png)
+
 ## Version
 
 This font was built using
