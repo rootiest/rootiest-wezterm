@@ -44,8 +44,7 @@ The rootiest WezTerm configuration you will ever see!
 2. Install pre-requisites
 
    - Required
-     - [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/) -
-       Nerd Fonts glyphs are required.
+     - [Rootiest Iosevka fonts](./fonts/README.md).
    - Optional
      - [fish](https://fishshell.com/)
      - [neovim](https://neovim.io/)
