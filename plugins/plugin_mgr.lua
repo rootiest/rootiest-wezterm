@@ -1,18 +1,11 @@
 --          ╭─────────────────────────────────────────────────────────╮
---          │                         PLUGINS                         │
+--          │                     PLUGIN MANAGER                      │
 --          ╰─────────────────────────────────────────────────────────╯
 
--- List of plugins to load
-local plugins = {
-	"battery",
-	"hyperlinks",
-	"resurrect",
-	"smart_splits",
-	"tabline",
-	"plugin_mgr",
-}
+local M = {}
 
--- Load all plugins
-for _, plugin in ipairs(plugins) do
-	require("plugins." .. plugin)
-end
+local wezterm = WEZTERM
+
+PLUGIN_MGR = wezterm.plugin.require("https://gitlab.com/alecthegeek/wezterm-plugin-mgr.git")
+
+return M
