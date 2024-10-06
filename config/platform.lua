@@ -26,6 +26,7 @@ end
 -- Set OS-specific options
 if myos == "win" then
 	opts.default_prog = { "pwsh.exe" }
+	opts.term = "xterm-256color"
 elseif myos == "mac" then
 	opts.default_prog = { "zsh" }
 else
