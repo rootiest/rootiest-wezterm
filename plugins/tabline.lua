@@ -1,26 +1,25 @@
-local wezterm = WEZTERM
 local config = CONFIG
 local types = require("types")
 local funcs = require("funcs")
 local batteries = BATTERIES
 
-local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+local tabline = WEZTERM.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 
 local tab_opts = {
 	options = {
 		icons_enabled = true,
-		theme = THEME,
+		theme = COLORTHEME,
 		section_separators = {
-			left = wezterm.nerdfonts.ple_right_half_circle_thick,
-			right = wezterm.nerdfonts.ple_left_half_circle_thick,
+			left = WEZTERM.nerdfonts.ple_right_half_circle_thick,
+			right = WEZTERM.nerdfonts.ple_left_half_circle_thick,
 		},
 		component_separators = {
-			left = wezterm.nerdfonts.ple_right_half_circle_thin,
-			right = wezterm.nerdfonts.ple_left_half_circle_thin,
+			left = WEZTERM.nerdfonts.ple_right_half_circle_thin,
+			right = WEZTERM.nerdfonts.ple_left_half_circle_thin,
 		},
 		tab_separators = {
-			left = wezterm.nerdfonts.ple_right_half_circle_thick,
-			right = wezterm.nerdfonts.ple_left_half_circle_thick,
+			left = WEZTERM.nerdfonts.ple_right_half_circle_thick,
+			right = WEZTERM.nerdfonts.ple_left_half_circle_thick,
 		},
 	},
 	sections = {
@@ -33,7 +32,7 @@ local tab_opts = {
 		tab_active = {
 			{
 				"zoomed",
-				icon = wezterm.nerdfonts.oct_zoom_in,
+				icon = WEZTERM.nerdfonts.oct_zoom_in,
 				padding = { left = 0, right = 0 },
 			},
 			{
@@ -43,7 +42,7 @@ local tab_opts = {
 				end,
 				padding = { left = 0, right = 0 },
 			},
-			wezterm.nerdfonts.ple_right_half_circle_thin,
+			WEZTERM.nerdfonts.ple_right_half_circle_thin,
 			{
 				"tab",
 				fmt = function(str)
@@ -55,13 +54,13 @@ local tab_opts = {
 			{ "parent", padding = { left = 0, right = 0 } },
 			"/",
 			{ "cwd", padding = { left = 0, right = 1 } },
-			wezterm.nerdfonts.ple_left_half_circle_thin,
+			WEZTERM.nerdfonts.ple_left_half_circle_thin,
 			{ "process", padding = { left = 0, right = 0 } },
 		},
 		tab_inactive = {
 			{
 				"zoomed",
-				icon = wezterm.nerdfonts.oct_zoom_in,
+				icon = WEZTERM.nerdfonts.oct_zoom_in,
 				padding = { left = 0, right = 0 },
 			},
 			{
@@ -125,6 +124,7 @@ local function apply_tabline_config(conf)
 		top = 0,
 		bottom = 0,
 	}
+	tabline.get_colors()
 	local normbg = require("tabline.config").colors.normal_mode.c.bg
 	conf.colors = {
 		tab_bar = {
@@ -132,7 +132,7 @@ local function apply_tabline_config(conf)
 			inactive_tab_edge = normbg,
 		},
 	}
-	config.status_update_interval = 500
+	conf.status_update_interval = 500
 end
 
 apply_tabline_config(config)
