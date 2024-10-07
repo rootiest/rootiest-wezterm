@@ -9,7 +9,7 @@ local plugins = {
 	"resurrect",
 	"smart_splits",
 	"tabline",
-	"plugin_mgr",
+	--"plugin_mgr",
 }
 
 -- Load all plugins
