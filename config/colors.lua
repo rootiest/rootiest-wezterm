@@ -10,9 +10,25 @@ local cur_hour = wezterm.time.now():format("%H")
 
 local hour_angle = require("funcs").get_hour_angle(cur_hour)
 
+--- catppuccin theme
+---@see catppuccin_documentation https://github.com/catppuccin/wezterm
+local function get_colorscheme(appearance)
+	if WEZTERM.gui then
+		if appearance:find("Dark") then
+			return "Catppuccin Mocha"
+		else
+			return "Catppuccin Latte"
+		end
+	else
+		return "Catppuccin Mocha"
+	end
+end
+
+THEME = get_colorscheme(wezterm.gui.get_appearance())
+
 local opts = {
 	-- Color Scheme
-	color_scheme = "Catppuccin Mocha",
+	color_scheme = THEME,
 	-- Tab Bar Colors
 	colors = {
 		-- Compose Cursor
