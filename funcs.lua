@@ -7,12 +7,21 @@ local M = {}
 local wezterm = WEZTERM
 local types = require("types")
 
--- Set the leader icon
-wezterm.on("update-status", function(window, _)
+-- Update status event
+wezterm.on("update-status", function(window, pane)
+	-- Set the leader icon
 	if window:leader_is_active() then
 		types.leader.icon = types.leader.on
 	else
 		types.leader.icon = types.leader.off
+	end
+
+	-- Set the TERM
+	local tty = pane:get_tty_name()
+	if tty then
+		CONFIG.term = "wezterm"
+	else
+		CONFIG.term = "xterm-256color"
 	end
 end)
 

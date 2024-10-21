@@ -1,19 +1,11 @@
 --          ╭─────────────────────────────────────────────────────────╮
---          │                         PLUGINS                         │
+--          │                       Sessionizer                       │
 --          ╰─────────────────────────────────────────────────────────╯
 
--- List of plugins to load
-local plugins = {
-	"battery",
-	"hyperlinks",
-	"resurrect",
-	"smart_splits",
-	"tabline",
-	-- "sessionizer",
-	--"plugin_mgr",
-}
+local wezterm = WEZTERM
+local config = CONFIG
 
--- Load all plugins
-for _, plugin in ipairs(plugins) do
-	require("plugins." .. plugin)
+SESSIONIZER = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
+if SESSIONIZER then
+	SESSIONIZER.apply_to_config(config)
 end

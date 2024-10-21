@@ -31,7 +31,7 @@ local opts = {
 	audible_bell = "SystemBeep",
 
 	-- Terminal Variable
-	term = "wezterm",
+	-- term = "wezterm",
 
 	--Honor kitty protocol inputs
 	enable_kitty_keyboard = true,

@@ -11,7 +11,7 @@
 --                        https://github.com/wez/wezterm/
 
 -- Load WezTerm module
-WEZTERM = require("wezterm")
+WEZTERM = require("wezterm") --[[@as Wezterm]]
 -- Load Config Builder
 CONFIG = WEZTERM.config_builder()
 
@@ -35,10 +35,14 @@ require("plugs")
 -- Encrypt Sessions
 require("encryption")
 
+-- Load Menus
+CONFIG.launch_menu = require("menus")
+
 --------- Update Plugins ----------
 ---Running this may cause slowdowns
 -----------------------------------
 -- WEZTERM.plugin.update_all() ----
+-- print(WEZTERM.plugin.list())
 -----------------------------------
 
 -- Return configuration
