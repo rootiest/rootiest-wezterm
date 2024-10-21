@@ -117,6 +117,7 @@ tabline.setup(tab_opts)
 local function apply_tabline_config(conf)
 	conf.use_fancy_tab_bar = false
 	conf.show_new_tab_button_in_tab_bar = false
+	conf.tab_bar_at_bottom = false
 	conf.tab_max_width = 64
 	conf.window_padding = {
 		left = 0,
