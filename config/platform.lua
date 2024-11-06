@@ -27,7 +27,7 @@ end
 if myos == "win" then
 	opts.default_prog = { "pwsh.exe" }
 	opts.term = "xterm-256color"
-	opts.front_end = "WebGpu"
+	opts.front_end = "OpenGL"
 	opts.prefer_egl = true
 	opts.window_background_opacity = 0
 	opts.win32_system_backdrop = "Mica"
