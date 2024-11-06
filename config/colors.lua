@@ -10,7 +10,6 @@ local cur_hour = wezterm.time.now():format("%H")
 
 local hour_angle = require("funcs").get_hour_angle(cur_hour)
 
-
 --- catppuccin theme
 ---@see catppuccin_documentation https://github.com/catppuccin/wezterm
 local function get_colorscheme(appearance)

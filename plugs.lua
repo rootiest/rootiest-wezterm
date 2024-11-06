@@ -9,6 +9,8 @@ local plugins = {
 	"resurrect",
 	"smart_splits",
 	"tabline",
+	"neovim",
+	"tunicodes",
 	-- "sessionizer",
 	--"plugin_mgr",
 }

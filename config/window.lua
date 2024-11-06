@@ -19,13 +19,33 @@ local opts = {
 
 	-- Window Decorations
 	window_decorations = "TITLE | RESIZE",
+	--window_decorations = "INTEGRATED_BUTTONS|TITLE|RESIZE",
+	integrated_title_buttons = { "Hide", "Maximize", "Close" },
+	window_frame = {
+		inactive_titlebar_bg = "#353535",
+		active_titlebar_bg = "#2b2042",
+		inactive_titlebar_fg = "#cccccc",
+		active_titlebar_fg = "#ffffff",
+		inactive_titlebar_border_bottom = "#2b2042",
+		active_titlebar_border_bottom = "#2b2042",
+		button_fg = "#cccccc",
+		button_bg = "#2b2042",
+		button_hover_fg = "#ffffff",
+		button_hover_bg = "#3b3052",
+	},
 
 	-- Visual Bell
 	visual_bell = {
-		fade_in_duration_ms = 75,
-		fade_out_duration_ms = 75,
-		target = "CursorColor",
+		fade_in_function = "EaseIn",
+		fade_in_duration_ms = 150,
+		fade_out_function = "EaseOut",
+		fade_out_duration_ms = 150,
 	},
+	--{
+	--  fade_in_duration_ms = 75,
+	--  fade_out_duration_ms = 75,
+	--  target = "CursorColor",
+	--},
 
 	-- Audible Bell
 	audible_bell = "SystemBeep",

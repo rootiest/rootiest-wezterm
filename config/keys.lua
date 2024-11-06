@@ -5,7 +5,16 @@
 local wezterm = WEZTERM
 local act = wezterm.action
 
+-- Set up some reference values
+local Chord = "SHIFT|CTRL"
+local LeaderChord = "LEADER|SHIFT|CTRL"
+local LeaderShift = "LEADER|SHIFT"
+local LeaderCtrl = "LEADER|CTRL"
+
+local FuzzyLaunch = "FUZZY|TABS|DOMAINS|WORKSPACES|COMMANDS|LAUNCH_MENU_ITEMS|KEY_ASSIGNMENTS"
+
 local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
+local tunicodes = require("plugins/tunicodes")
 
 local opts = {
 	--  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Leader key ━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -13,20 +22,20 @@ local opts = {
 	--  ━━━━━━━━━━━━━━━━━━━━━━━━━ Global Key Mappings ━━━━━━━━━━━━━━━━━━━━━
 	keys = {
 		-- Close window
-		{ key = "q", mods = "LEADER|SHIFT|CTRL", action = act.QuitApplication },
+		{ key = "q", mods = LeaderChord, action = act.QuitApplication },
 		-- Split pane
-		{ key = "|", mods = "LEADER|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "_", mods = "LEADER|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+		{ key = "|", mods = LeaderShift, action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "_", mods = LeaderShift, action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
 		-- Move pane
-		{ key = "h", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Left") },
-		{ key = "j", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Down") },
-		{ key = "k", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Up") },
-		{ key = "l", mods = "SHIFT|CTRL", action = act.ActivatePaneDirection("Right") },
+		{ key = "h", mods = Chord, action = act.ActivatePaneDirection("Left") },
+		{ key = "j", mods = Chord, action = act.ActivatePaneDirection("Down") },
+		{ key = "k", mods = Chord, action = act.ActivatePaneDirection("Up") },
+		{ key = "l", mods = Chord, action = act.ActivatePaneDirection("Right") },
 		-- Move pane to new window
 		{
 			key = "!",
-			mods = "LEADER | SHIFT",
+			mods = LeaderShift,
 			action = wezterm.action_callback(function(_, pane)
 				pane:move_to_new_window()
 			end),
@@ -35,7 +44,7 @@ local opts = {
 		-- Toggle pane zoom
 		{
 			key = "z",
-			mods = "SHIFT|CTRL",
+			mods = Chord,
 			action = act.TogglePaneZoomState,
 		},
 		{
@@ -43,10 +52,12 @@ local opts = {
 			mods = "LEADER",
 			action = act.TogglePaneZoomState,
 		},
+		-- Reload Config
+		{ key = "F5", mods = "LEADER", action = act.ReloadConfiguration },
 
 		-- Close pane
 		{ key = "q", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
-		{ key = "q", mods = "SHIFT|CTRL", action = act.CloseCurrentPane({ confirm = true }) },
+		{ key = "q", mods = Chord, action = act.CloseCurrentPane({ confirm = true }) },
 
 		-- Resize pane
 		{ key = "h", mods = "ALT", action = act.AdjustPaneSize({ "Left", 1 }) },
@@ -59,45 +70,45 @@ local opts = {
 
 		-- Tab Manipulation
 		{ key = "PageUp", mods = "CTRL", action = act.ActivateTabRelative(1) },
-		{ key = "PageUp", mods = "SHIFT|CTRL", action = act.MoveTabRelative(1) },
+		{ key = "PageUp", mods = Chord, action = act.MoveTabRelative(1) },
 		{ key = "PageDown", mods = "CTRL", action = act.ActivateTabRelative(-1) },
-		{ key = "PageDown", mods = "SHIFT|CTRL", action = act.MoveTabRelative(-1) },
+		{ key = "PageDown", mods = Chord, action = act.MoveTabRelative(-1) },
 
 		{ -- Quick launch
 			key = "x",
-			mods = "LEADER|CTRL",
+			mods = LeaderCtrl,
 			action = act.ShowLauncherArgs({
 				title = "Quick Launch",
-				flags = "FUZZY|TABS|DOMAINS|WORKSPACES|COMMANDS|LAUNCH_MENU_ITEMS|KEY_ASSIGNMENTS",
+				flags = FuzzyLaunch,
 			}),
 		},
 
 		-- Search
 		{ key = "f", mods = "LEADER", action = act.Search("CurrentSelectionOrEmptyString") },
-		{ key = "f", mods = "SHIFT|CTRL", action = act.Search("CurrentSelectionOrEmptyString") },
+		{ key = "f", mods = Chord, action = act.Search("CurrentSelectionOrEmptyString") },
 
 		-- Miscellaneous
-		{ key = "a", mods = "LEADER|CTRL", action = act.SendKey({ key = "a", mods = "CTRL" }) },
+		{ key = "a", mods = LeaderCtrl, action = act.SendKey({ key = "a", mods = "CTRL" }) },
 		{ key = ";", mods = "CTRL", action = act.ActivateCommandPalette },
 		{ key = "F1", mods = "LEADER", action = act.ShowDebugOverlay },
 		{
 			key = "u",
-			mods = "LEADER|CTRL",
+			mods = LeaderCtrl,
 			action = act.AttachDomain("SSH:aws-discord"),
 		},
 		{
 			key = "s",
-			mods = "LEADER|CTRL",
+			mods = LeaderCtrl,
 			action = act.ShowLauncherArgs({ title = "Connect to SSH server", flags = "FUZZY|DOMAINS" }),
 		},
-		{ key = "z", mods = "LEADER|CTRL", action = act.TogglePaneZoomState },
-		{ key = "n", mods = "LEADER|CTRL", action = act.SpawnWindow },
+		{ key = "z", mods = LeaderCtrl, action = act.TogglePaneZoomState },
+		{ key = "n", mods = LeaderCtrl, action = act.SpawnWindow },
 		{ key = "x", mods = "LEADER", action = act.ActivateCopyMode },
 
 		-- Naming
 		{ -- Rename [W]orkspace
 			key = "w",
-			mods = "LEADER|CTRL",
+			mods = LeaderCtrl,
 			action = act.PromptInputLine({
 				description = "Enter new name for the workspace:",
 				action = wezterm.action_callback(function(window, _, line)
@@ -109,12 +120,13 @@ local opts = {
 		},
 		{ -- Rename [T]ab
 			key = "t",
-			mods = "LEADER|CTRL",
+			mods = LeaderCtrl,
 			action = act.PromptInputLine({
 				description = "Enter new name for the tab:",
 				action = wezterm.action_callback(function(_, pane, line)
 					if line then
 						local tab = pane:tab()
+						---@diagnostic disable-next-line: need-check-nil
 						tab:set_title(line)
 					end
 				end),
@@ -171,6 +183,11 @@ local opts = {
 				end)
 			end),
 		},
+		{ -- [.] Insert Unicode and Emoji symbols
+			key = ".",
+			mods = LeaderCtrl,
+			action = tunicodes.DefaultAction,
+		},
 	},
 
 	--  ━━━━━━━━━━━━━━━━━━━━━━ Conditional Key Mappings ━━━━━━━━━━━━━━━━━━━
@@ -218,11 +235,6 @@ local opts = {
 			mods = "CTRL",
 			action = act.OpenLinkAtMouseCursor,
 		},
-		-- { -- Ctrl+Double-Left-Click: (Up) Open Hyperlink
-		-- 	event = { Up = { streak = 2, button = "Left" } },
-		-- 	mods = "CTRL",
-		-- 	action = act.OpenLinkAtMouseCursor,
-		-- },
 		{ -- Ctrl+WheelUp: Go to previous tab
 			event = { Down = { streak = 1, button = { WheelUp = 1 } } },
 			mods = "CTRL",
