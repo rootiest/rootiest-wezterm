@@ -41,12 +41,14 @@ end
 
 -- Check for Nix and respond accordingly
 local is_nix = os.getenv("IN_NIX_SHELL")
+local nix = false
 if is_nix == "true" then
 	opts.front_end = "WebGpu"
+	nix = true
 end
 
 -- Set global variables for convenience
-ISNIX = is_nix
+ISNIX = nix
 MYOS = myos
 
 -- Return the opts table
