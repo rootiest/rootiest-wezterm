@@ -39,6 +39,14 @@ else
 	opts.default_prog = { "fish" }
 end
 
+-- Check for Nix and respond accordingly
+local is_nix = os.getenv("IN_NIX_SHELL")
+if is_nix == "true" then
+	opts.front_end = "WebGpu"
+end
+
+-- Set global variables for convenience
+ISNIX = is_nix
 MYOS = myos
 
 -- Return the opts table
