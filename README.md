@@ -212,8 +212,14 @@ and loaded by the tabline plugin.
 Fish shell configuration that pairs well with this WezTerm configuration
 and the NeoVim configuration.
 
+[Rootiest Tmux](https://github.com/rootiest/rootiest-tmux) -
+A tmux configuration that is designed to work with this WezTerm config.
+
 [Rootiest Neovim](https://github.com/rootiest/rootiest-nvim) -
 A NeoVim config built to work alongside this and the fish config.
+
+[Rootiest Iosevka Font](https://github.com/rootiest/rootiest-iosevka) -
+A custom Iosevka font that is designed by developers, for developers.
 
 [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts/) -
 A collection of fonts that include many icons and glyphs that are used in this configuration.
