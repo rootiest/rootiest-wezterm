@@ -25,6 +25,16 @@ wezterm.on("update-status", function(window, pane)
 	end
 end)
 
+wezterm.on("toggle-tabbar", function(window, _)
+	local overrides = window:get_config_overrides() or {}
+	if overrides.enable_tab_bar == false then
+		overrides.enable_tab_bar = true
+	else
+		overrides.enable_tab_bar = false
+	end
+	window:set_config_overrides(overrides)
+end)
+
 ---@function Function to render the leader icon
 ---@return string leadericon The leader icon
 function M.leader_component()

@@ -188,6 +188,7 @@ local opts = {
 			mods = LeaderCtrl,
 			action = tunicodes.DefaultAction,
 		},
+		{ key = "u", mods = LeaderCtrl, action = act.EmitEvent("toggle-tabbar") },
 	},
 
 	--  ━━━━━━━━━━━━━━━━━━━━━━ Conditional Key Mappings ━━━━━━━━━━━━━━━━━━━
