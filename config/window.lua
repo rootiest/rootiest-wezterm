@@ -17,9 +17,14 @@ local opts = {
 	-- Set the animation framerate
 	animation_fps = 120,
 
+	-- Wayland
+	--enable_wayland = false,
+
 	-- Window Decorations
 	window_decorations = "TITLE | RESIZE",
-	--window_decorations = "INTEGRATED_BUTTONS|TITLE|RESIZE",
+	-- window_decorations = "NONE",
+	-- window_decorations = "TITLE | RESIZE | INTEGRATED_BUTTONS",
+	--window_decorations = "RESIZE | INTEGRATED_BUTTONS",
 	integrated_title_buttons = { "Hide", "Maximize", "Close" },
 	window_frame = {
 		inactive_titlebar_bg = "#353535",
@@ -65,6 +70,10 @@ local opts = {
 
 	-- Scrollback Lines
 	scrollback_lines = 20000,
+
+	-- Exit Behavior
+	exit_behavior_messaging = "Brief",
+	exit_behavior = "CloseOnCleanExit",
 }
 
 return opts
