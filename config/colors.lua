@@ -4,10 +4,13 @@
 -- Load WezTerm module
 local wezterm = WEZTERM
 
+-- Load Config tables
 local types = require("types")
 
+-- Get current time
 local cur_hour = wezterm.time.now():format("%H")
 
+-- Calculate hour angle
 local hour_angle = require("funcs").get_hour_angle(cur_hour)
 
 --- catppuccin theme
@@ -47,16 +50,19 @@ local opts = {
 	command_palette_fg_color = "#C6D0F5", -- Command Palette Foreground
 	-- Titlebar and Frame Colors
 	window_frame = {
+		-- Titlebar Colors
 		active_titlebar_bg = "#232634",
 		inactive_titlebar_bg = "#303446",
 		inactive_titlebar_fg = "#484D69",
 		active_titlebar_fg = "#C6D0F5",
 		inactive_titlebar_border_bottom = "#3b3052",
 		active_titlebar_border_bottom = "#3b3052",
+		-- Tab Bar Colors
 		button_fg = "#C6D0F5",
 		button_bg = "#3b3052",
 		button_hover_fg = "#C6D0F5",
 		button_hover_bg = "#2b2042",
+		-- Tab Bar Font
 		font = wezterm.font(types.win_font),
 		-- Tab Font Size
 		font_size = 10,
@@ -66,17 +72,21 @@ local opts = {
 		saturation = 1.0,
 		brightness = 0.5,
 	},
+	-- Background translucency
+	window_background_opacity = 0.95,
+	-- Background gradient effect
 	window_background_gradient = {
 		orientation = {
 			Linear = {
 				angle = hour_angle,
 			},
 		},
+		-- Gradient Colors
 		colors = {
-			-- "#303446",
 			"#24273a",
 			"#1e1e2e",
 		},
+		-- Gradient Options
 		interpolation = "CatmullRom",
 		blend = "Oklab",
 		noise = 128,
