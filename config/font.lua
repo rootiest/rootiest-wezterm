@@ -30,10 +30,14 @@ local opts = {
 	tab_max_width = 60,
 	tab_bar_at_bottom = false,
 
+  -- Unicode Version
 	unicode_version = 14,
 
 	-- Resize by cell
 	use_resize_increments = true,
+
+	-- Ignore any missing glyphs
+	warn_about_missing_glyphs = false,
 }
 
 return opts
