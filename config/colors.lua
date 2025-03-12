@@ -21,25 +21,41 @@ local function get_colorscheme(appearance)
 		if appearance:find("Dark") then
 			scheme.theme = "Catppuccin Mocha ANSI"
 			scheme.mode = "dark"
+			scheme.bg = {
+				"#24273a",
+				"#1e1e2e",
+			}
 		else
 			scheme.theme = "Catppuccin Latte ANSI"
 			scheme.mode = "light"
+			scheme.bg = {
+				"#eff1f5",
+				"#fef5f1",
+			}
 		end
 	else
 		scheme.theme = "Catppuccin Mocha ANSI"
 		scheme.mode = "dark"
+		scheme.bg = {
+			"#24273a",
+			"#1e1e2e",
+		}
 	end
 	return scheme
 end
 
 COLORTHEME = get_colorscheme(wezterm.gui.get_appearance()).theme
 COLORMODE = get_colorscheme(wezterm.gui.get_appearance()).mode
+COLORBG = get_colorscheme(wezterm.gui.get_appearance()).bg
 
 local opts = {
 	-- Color Scheme
 	color_scheme = COLORTHEME,
 	-- Tab Bar Colors
 	colors = {
+		-- Cursor
+		cursor_bg = "#a5e3a0",
+		cursor_fg = "#C6D0F5",
 		-- Compose Cursor
 		compose_cursor = "#a5e3a0",
 		-- Visual Bell
@@ -82,10 +98,7 @@ local opts = {
 			},
 		},
 		-- Gradient Colors
-		colors = {
-			"#24273a",
-			"#1e1e2e",
-		},
+		colors = COLORBG,
 		-- Gradient Options
 		interpolation = "CatmullRom",
 		blend = "Oklab",
