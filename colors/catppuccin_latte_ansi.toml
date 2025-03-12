@@ -1,25 +1,26 @@
 # File: catppuccin_latte_ansi.toml
 [colors]
 ansi = [
-  "#5c5f77",
+  "#bcc0cc",
   "#d20f39",
   "#40a02b",
   "#df8e1d",
   "#1e66f5",
   "#ea76cb",
   "#179299",
-  "#acb0be",
+  "#5c5f77",
+
 ]
 background = "#eff1f5"
 brights = [
-  "#6c6f85",
+  "#acb0be",
   "#de293e",
   "#49af3d",
   "#eea02d",
   "#456eff",
   "#fe85d8",
   "#2d9fa8",
-  "#bcc0cc",
+  "#6c6f85",
 ]
 compose_cursor = "#4c4f69"
 cursor_bg = "#dc8a78"
