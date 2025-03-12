@@ -8,7 +8,7 @@ ansi = [
   "#89b4fa",
   "#f5c2e7",
   "#94e2d5",
-  "#bac2de",
+  "#a6adc8",
 ]
 background = "#1e1e2e"
 brights = [
@@ -19,7 +19,7 @@ brights = [
   "#74a8fc",
   "#f2aede",
   "#6bd7ca",
-  "#a6adc8",
+  "#bac2de",
 ]
 compose_cursor = "#f2cdcd"
 cursor_bg = "#f5e0dc"
