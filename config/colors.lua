@@ -19,14 +19,14 @@ local function get_colorscheme(appearance)
 	local scheme = {}
 	if WEZTERM.gui then
 		if appearance:find("Dark") then
-			scheme.theme = "Catppuccin Mocha"
+			scheme.theme = "Catppuccin Mocha ANSI"
 			scheme.mode = "dark"
 		else
-			scheme.theme = "Catppuccin Latte"
+			scheme.theme = "Catppuccin Latte ANSI"
 			scheme.mode = "light"
 		end
 	else
-		scheme.theme = "Catppuccin Mocha"
+		scheme.theme = "Catppuccin Mocha ANSI"
 		scheme.mode = "dark"
 	end
 	return scheme

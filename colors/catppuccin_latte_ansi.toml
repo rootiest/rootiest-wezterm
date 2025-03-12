@@ -1,0 +1,90 @@
+# File: catppuccin_latte_ansi.toml
+[colors]
+ansi = [
+  "#5c5f77",
+  "#d20f39",
+  "#40a02b",
+  "#df8e1d",
+  "#1e66f5",
+  "#ea76cb",
+  "#179299",
+  "#acb0be",
+]
+background = "#eff1f5"
+brights = [
+  "#6c6f85",
+  "#de293e",
+  "#49af3d",
+  "#eea02d",
+  "#456eff",
+  "#fe85d8",
+  "#2d9fa8",
+  "#bcc0cc",
+]
+compose_cursor = "#4c4f69"
+cursor_bg = "#dc8a78"
+cursor_border = "#dc8a78"
+cursor_fg = "#eff1f5"
+foreground = "#4c4f69"
+scrollbar_thumb = "#acb0be"
+selection_bg = "#acb0be"
+selection_fg = "#4c4f69"
+split = "#9ca0b0"
+visual_bell = "#ccd0da"
+bold = "#4c4f69"
+hyperlink = "#04a5e5"
+
+[colors.indexed]
+16 = "#fe640b"
+17 = "#dc8a78"
+
+[colors.tab_bar]
+background = "#dce0e8"
+inactive_tab_edge = "#ccd0da"
+
+[colors.tab_bar.active_tab]
+bg_color = "#8839ef"
+fg_color = "#dce0e8"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#e6e9ef"
+fg_color = "#4c4f69"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#eff1f5"
+fg_color = "#4c4f69"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.new_tab]
+bg_color = "#ccd0da"
+fg_color = "#4c4f69"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#bcc0cc"
+fg_color = "#4c4f69"
+intensity = "Normal"
+italic = false
+strikethrough = false
+underline = "None"
+
+[metadata]
+aliases = []
+author = "Catppuccin Org"
+name = "Catppuccin Latte ANSI"
+origin_url = "https://github.com/catppuccin/wezterm"
+wezterm_version = "20220807-113146-c2fee766"
