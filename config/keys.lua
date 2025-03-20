@@ -17,6 +17,11 @@ local FuzzyLaunch = "FUZZY|TABS|DOMAINS|WORKSPACES|COMMANDS|LAUNCH_MENU_ITEMS|KE
 local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
 local tunicodes = require("plugins/tunicodes")
 
+wezterm.on("get-pane-domain", function(window, pane)
+	local domain = pane:get_domain_name()
+	window:toast_notification("WezTerm", "Current Pane Domain: " .. domain, nil, 3000)
+end)
+
 local opts = {
 	--  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Leader key ━━━━━━━━━━━━━━━━━━━━━━━━━━
 	leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1500 },
@@ -107,6 +112,11 @@ local opts = {
 		{ key = "x", mods = "LEADER", action = act.ActivateCopyMode },
 
 		-- Naming
+		{ -- Get [D]omain Name
+			key = "d",
+			mods = "LEADER",
+			action = act.EmitEvent("get-pane-domain"),
+		},
 		{ -- Rename [W]orkspace
 			key = "w",
 			mods = LeaderCtrl,
@@ -218,10 +228,23 @@ local opts = {
 				window:perform_action(wezterm.action.TogglePaneZoomState, pane)
 			end),
 		},
+		{ -- Start Split Creation Mode
+			key = "i",
+			mods = "ALT",
+			action = wezterm.action.ActivateKeyTable({ name = "split_mode", one_shot = true }),
+		},
 	},
 
 	--  ━━━━━━━━━━━━━━━━━━━━━━ Conditional Key Mappings ━━━━━━━━━━━━━━━━━━━
 	key_tables = {
+		split_mode = { -- Split Creation Mode
+			-- Split Vertical
+			{ key = "r", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+			-- Split Horizontal
+			{ key = "d", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+			-- Cancel key table
+			{ key = "Escape", action = wezterm.action.PopKeyTable },
+		},
 		resize_mode = { ---------- Resize Pane Mode -------------------------
 			{ key = "LeftArrow", action = act.AdjustPaneSize({ "Left", 1 }) },
 			{ key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
