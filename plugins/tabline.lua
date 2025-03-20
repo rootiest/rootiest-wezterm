@@ -137,8 +137,8 @@ local function apply_tabline_config(conf)
 		top = 0,
 		bottom = 0,
 	}
-	tabline.get_colors()
-	local normbg = require("tabline.config").colors.normal_mode.c.bg
+	local colors = require("tabline.config").theme
+	local normbg = colors.normal_mode.c.bg
 	conf.colors = {
 		tab_bar = {
 			background = normbg,
