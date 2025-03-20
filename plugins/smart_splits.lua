@@ -16,7 +16,7 @@ SMART_SPLITS.apply_to_config(CONFIG, {
 	},
 	-- modifier keys to combine with direction_keys
 	modifiers = {
-		move = "CTRL|SHIFT", -- modifier to use for pane movement
+		move = "CTRL", -- modifier to use for pane movement
 		resize = "ALT", -- modifier to use for pane resize
 	},
 })
