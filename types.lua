@@ -147,19 +147,50 @@ M.font = {
 }
 
 M.rootiest_font = {
-	"Iosevka Rootiest v2",
-	"Iosevka Rootiest",
+	{
+		family = "Iosevka Rootiest v2",
+		weight = "Regular",
+		style = "Normal",
+		italic = false,
+	},
+	{
+		family = "Iosevka Rootiest v2",
+		weight = "Bold",
+		style = "Oblique",
+		italic = false,
+	},
+	{
+		family = "Iosevka Rootiest",
+		weight = "Regular",
+		style = "Normal",
+		italic = false,
+	},
 	{
 		-- Font Family
 		family = "Iosevka Custom",
+		style = "Normal",
 		-- Font Weight
-		weight = "Regular",
+		weight = "Medium",
 		-- Character Varients and Ligatures
 		harfbuzz_features = M.harfbuzz_rootiest,
+		italic = false,
+	},
+	{
+		family = "Symbols Nerd Font",
+		style = "Normal",
+		italic = false,
+	},
+	{
+		family = "Symbols Nerd Font Mono",
+		style = "Normal",
+		italic = false,
+	},
+	{
+		family = "Maple Mono NF",
+		style = "Italic",
+		italic = true,
 	},
 	"Flog Symbols",
-	"Symbols Nerd Font Mono",
-	"Symbols Nerd Font",
 	"PowerlineSymbols",
 	"Material Icons",
 	"Noto Color Emoji",
