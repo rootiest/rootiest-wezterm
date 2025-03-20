@@ -14,17 +14,26 @@ local opts = {
 		bottom = "0%",
 	},
 
+	window_content_alignment = {
+		horizontal = "Center",
+		vertical = "Center",
+	},
+
 	-- Set the animation framerate
 	animation_fps = 120,
+	cursor_blink_rate = 800,
+	cursor_blink_ease_in = "EaseIn",
+	cursor_blink_ease_out = "EaseOut",
+	max_fps = 170,
 
 	-- Wayland
-	--enable_wayland = false,
+	enable_wayland = true,
 
 	-- Window Decorations
 	window_decorations = "TITLE | RESIZE",
 	-- window_decorations = "NONE",
 	-- window_decorations = "TITLE | RESIZE | INTEGRATED_BUTTONS",
-	--window_decorations = "RESIZE | INTEGRATED_BUTTONS",
+	-- window_decorations = "RESIZE | INTEGRATED_BUTTONS",
 	integrated_title_buttons = { "Hide", "Maximize", "Close" },
 	window_frame = {
 		inactive_titlebar_bg = "#353535",
@@ -56,7 +65,7 @@ local opts = {
 	audible_bell = "SystemBeep",
 
 	-- Terminal Variable
-	-- term = "wezterm",
+	term = "wezterm",
 
 	--Honor kitty protocol inputs
 	enable_kitty_keyboard = true,
@@ -64,7 +73,7 @@ local opts = {
 	-- Rendering
 	front_end = "WebGpu",
 	-- webgpu_power_preference = "HighPerformance",
-	-- webgpu_power_preference = "LowPower",
+	webgpu_power_preference = "LowPower",
 	-- webgpu_preferred_adapter = gpus[1],
 	-- front_end = "OpenGL",
 
