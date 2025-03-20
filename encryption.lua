@@ -32,7 +32,7 @@ local function file_exists(file)
 end
 
 if file_exists(key) then
-	RESURRECT.set_encryption({
+	RESURRECT.state_manager.set_encryption({
 		enable = true,
 		method = "age", -- "age" is the default encryption method, but you can also specify "rage" or "gpg"
 		private_key = key, -- if using "gpg", you can omit this

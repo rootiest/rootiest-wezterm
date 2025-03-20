@@ -8,7 +8,7 @@ local M = {}
 RESURRECT = WEZTERM.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
 
 -- Set the periodic save interval
-RESURRECT.periodic_save({ interval_seconds = 60, save_workspaces = true, save_windows = true })
+RESURRECT.state_manager.periodic_save({ interval_seconds = 60, save_workspaces = true, save_windows = true })
 
 -- load the state whenever I create a new workspace
 WEZTERM.on("smart_workspace_switcher.workspace_switcher.created", function(window, _, label)
